@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecPort Password Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="script.js">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">🔐 SecPort</div>
+            <div class="subtitle">Password Generator</div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Password Length</label>
+            <div class="length-container">
+                <input type="range" id="lengthSlider" class="length-slider" min="4" max="128" value="16">
+                <div class="length-display" id="lengthDisplay">16</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Character Types</label>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <label class="custom-checkbox">
+                        <input type="checkbox" id="uppercase" checked>
+                        <span class="checkmark"></span>
+                    </label>
+                    <span class="checkbox-label">Uppercase (A-Z)</span>
+                </div>
+                <div class="checkbox-item">
+                    <label class="custom-checkbox">
+                        <input type="checkbox" id="lowercase" checked>
+                        <span class="checkmark"></span>
+                    </label>
+                    <span class="checkbox-label">Lowercase (a-z)</span>
+                </div>
+                <div class="checkbox-item">
+                    <label class="custom-checkbox">
+                        <input type="checkbox" id="numbers" checked>
+                        <span class="checkmark"></span>
+                    </label>
+                    <span class="checkbox-label">Numbers (0-9)</span>
+                </div>
+                <div class="checkbox-item">
+                    <label class="custom-checkbox">
+                        <input type="checkbox" id="symbols" checked>
+                        <span class="checkmark"></span>
+                    </label>
+                    <span class="checkbox-label">Symbols (!@#$%)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="advanced-options">
+            <div class="advanced-toggle" onclick="toggleAdvanced()">
+                <span class="toggle-text">Advanced Options</span>
+                <span class="toggle-arrow" id="toggleArrow">▼</span>
+            </div>
+            <div class="advanced-content" id="advancedContent">
+                <div class="exclude-similar">
+                    <div class="checkbox-item">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" id="excludeSimilar">
+                            <span class="checkmark"></span>
+                        </label>
+                        <span class="checkbox-label">Exclude similar characters (0, O, l, I, 1)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="password-output">
+            <textarea id="passwordField" class="password-field" rows="3" readonly placeholder="Your secure password will appear here..."></textarea>
+            <div id="strengthIndicator" class="strength-indicator" style="display: none;">
+                <span id="strengthText">Password Strength: </span>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-primary" onclick="generatePassword()">🎲 Generate Password</button>
+            <button class="btn btn-secondary" onclick="copyPassword()">📋 Copy to Clipboard</button>
+        </div>
+    </div>
+
+    <div id="notification" class="notification">
+        Password copied to clipboard! 🎉
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
